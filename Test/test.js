@@ -38,7 +38,7 @@ describe("Register", () => {
         done();
       });
   });
-  it("should return response 401 when body does not gets validated", (done) => {
+  it("should return response 400 when body does not gets validated", (done) => {
     const data = {
       email: faker.internet.email(),
       phone: "+917865459845",
@@ -49,7 +49,7 @@ describe("Register", () => {
       .post("/api/user/register")
       .send(data)
       .end((req, res) => {
-        res.should.have.status(401);
+        res.should.have.status(400);
         done();
       });
   });
@@ -68,7 +68,7 @@ describe("Register", () => {
         done();
       });
   });
-  it("should return response 401 when body does not gets valid response from service", (done) => {
+  it("should return response 400 when body does not gets valid response from service", (done) => {
     const data = {
       email: faker.internet.email(),
       phone: "+917865459845",
@@ -79,7 +79,7 @@ describe("Register", () => {
       .post("/api/user/register")
       .send(data)
       .end((req, res) => {
-        res.should.have.status(401);
+        res.should.have.status(400);
         done();
       });
   });
@@ -99,3 +99,110 @@ describe("Register", () => {
       });
   });
 });
+
+describe("Login", () => {
+  it.only("should return response 200 when controller is called from routes", (done) => {
+    const data = {
+      email: "usernine@gmail.com",
+      password: "User@9123"
+    }
+    chai.request(server)
+    .post("/api/user/login")
+    .send(data)
+    .end((req, res) => {
+      res.should.have.status(200);
+      done();
+    })
+  });
+  it.only("should return response 200 when data gets validated", (done) => {
+    const data = {
+      email: "usernine@gmail.com",
+      password: "User@9123"
+    }
+    chai.request(server)
+    .post("/api/user/login")
+    .send(data)
+    .end((req, res) => {
+      res.should.have.status(200);
+      done();
+    })
+  });
+  it.only("should return response 400 when data does not gets validated", (done) => {
+    const data = {
+      email: "userninegmail.com",
+      password: "User@9123"
+    }
+    chai.request(server)
+    .post("/api/user/login")
+    .send(data)
+    .end((req, res) => {
+      res.should.have.status(400);
+      done();
+    })
+  });
+  it.only("should return response 200 when service is called", (done) => {
+    const data = {
+      email: "usernine@gmail.com",
+      password: "User@9123"
+    }
+    chai.request(server)
+    .post("/api/user/login")
+    .send(data)
+    .end((req, res) => {
+      res.should.have.status(200);
+      done();
+    })
+  });
+  it.only("should return response 400 when data does not gets validated", (done) => {
+    const data = {
+      email: "userninegmail.com",
+      password: "User@9123"
+    }
+    chai.request(server)
+    .post("/api/user/login")
+    .send(data)
+    .end((req, res) => {
+      res.should.have.status(400);
+      done();
+    })
+  });
+  it.only("should return response 200 when user gets successfully logged in", (done) => {
+    const data = {
+      email: "usernine@gmail.com",
+      password: "User@9123"
+    }
+    chai.request(server)
+    .post("/api/user/login")
+    .send(data)
+    .end((req, res) => {
+      res.should.have.status(200);
+      done();
+    })
+  });
+  it.only("should return response 400 when email is wrong", (done) => {
+    const data = {
+      email: "userten@gmail.com",
+      password: "User@9123"
+    }
+    chai.request(server)
+    .post("/api/user/login")
+    .send(data)
+    .end((req, res) => {
+      res.should.have.status(400);
+      done();
+    })
+  });
+  it.only("should return response 400 when password is wrong", (done) => {
+    const data = {
+      email: "usernine@gmail.com",
+      password: "User@91234"
+    }
+    chai.request(server)
+    .post("/api/user/login")
+    .send(data)
+    .end((req, res) => {
+      res.should.have.status(400);
+      done();
+    })
+  });
+})

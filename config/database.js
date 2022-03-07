@@ -6,7 +6,7 @@ import { logger } from "../logger/logger.js";
  */
 const database = () => {
   try {
-    const database = process.env.database;
+    const database = process.env.DATABASE_URL;
     mongoose.connect(database);
     logger.info("Connected to the database");
   } catch (e) {
