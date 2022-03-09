@@ -25,8 +25,7 @@ export const login = async (body) =>{
   else{
     const payload = {
       _id: findUser._id,
-      email: findUser.email,
-      password: findUser.password
+      email: findUser.email
     }
     const token = jwt.sign(payload, process.env.SECRET_KEY, {expiresIn: "200H"});
     const comparePassword = await bcrypt.compare(body.password, findUser.password);

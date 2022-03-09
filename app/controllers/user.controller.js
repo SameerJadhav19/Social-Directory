@@ -29,12 +29,12 @@ export const login = async (req, res) => {
     const validation = loginValidator().validate(req.body)
     if (validation.error){
       logger.error(validation.error)
-      res.status(400).json({ message:"Please check the email or password."})
+      res.status(400).json({ message:"Please check the input."})
     }
     else{
       const data = await userService.login(req.body)
       if (data==="user not found"){
-        res.status(400).json({ message: "Please check email or password."})
+        res.status(404).json({ message: "Please check email or password."})
       }
       else if(data==="invalid password"){
         res.status(400).json({ message: "Please check email or password."})
