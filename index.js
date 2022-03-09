@@ -5,7 +5,7 @@ import database from "./config/database.js";
 import { logger } from "./logger/logger.js";
 
 const app = express();
-const { port } = process.env;
+const { PORT } = process.env;
 
 app.use(express.json());
 
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 database();
 
 // connect to the server
-app.listen(port, () => {
+app.listen(PORT, () => {
   logger.info(`Listening to the server`);
 });
 

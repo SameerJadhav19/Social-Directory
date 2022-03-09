@@ -13,7 +13,10 @@ export const createProfile = async (req, res) => {
       res.status(400).json({ message: "Please check the input." });
     } else {
       const data = await profileServices.userProfile(req.user._id, req.body);
-      if (data === "profile exists") {
+      if (data==="no user"){
+        res.status(404).json({ message: "This user does not exist." });
+      }
+      else if (data === "profile exists") {
         res.status(400).json({ message: "Profile already exists" });
       } else if (data === "cannot save profile") {
         res.status(500).json({ message: "Internal server error" });
