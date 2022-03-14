@@ -1,9 +1,9 @@
 import express from "express";
 const router = express.Router();
 
-import userRoute from "./user.routes.js";
-import profileRoute from "./profile.routes.js";
-import contactRoute from "./contact.routes.js"
+import userRoute from "../user/user.routes.js";
+import profileRoute from "../profile/profile.routes.js";
+import contactRoute from "../contact/contact.routes.js"
 const routes = () => {
   // define a route
   router.get("/", (req, res) => {

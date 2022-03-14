@@ -1,6 +1,6 @@
-import user from "../models/user.model.js";
-import profile from "../models/profile.model.js";
-import contactLists from "../models/contacts.model.js";
+import user from "../user/user.model.js";
+import profile from "../profile/profile.model.js";
+import contactLists from "../contact/contacts.model.js";
 
 export const createContact = async (profileId, contactList) => {
   try {
@@ -23,8 +23,8 @@ export const createContact = async (profileId, contactList) => {
           flag = true;
         }
       }
-      if (flag === true) {
-        return "contact already exists";
+      if (flag) {
+        throw { status: 409, message: "Contact already exists." };
       } else {
         const data = await contactLists.findByIdAndUpdate(
           isContactList._id,
@@ -46,7 +46,10 @@ export const createContact = async (profileId, contactList) => {
       const data = await contactLists.create(contactList);
       return data;
     }
-  } catch (err) {
-    return "error";
+  } catch (error) {
+    throw {
+      status: error.status || 500,
+      message: error.message || "Error from service",
+    };
   }
 };

@@ -1,5 +1,5 @@
 import express from 'express';
-import * as profileController from "../controllers/profile.contoller.js";
+import * as profileController from "./profile.contoller.js";
 import {userAuth} from "../utilities/middleware.js";
 
 const profileRouter = express.Router();

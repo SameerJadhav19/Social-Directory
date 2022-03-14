@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import user from "./user.model.js"
-import profile from "./profile.model.js"
+import user from "../user/user.model.js"
+import profile from "../profile/profile.model.js"
 
 const contact = new mongoose.Schema({
     userId:{

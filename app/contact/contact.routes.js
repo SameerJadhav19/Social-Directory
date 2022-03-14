@@ -1,6 +1,6 @@
 import express from 'express';
 import {userAuth} from "../utilities/middleware.js";
-import * as contactController from "../controllers/contact.controller.js"
+import * as contactController from "./contact.controller.js"
 
 const contactRouter = express.Router();
 
