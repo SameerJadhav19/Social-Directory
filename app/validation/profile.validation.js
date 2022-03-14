@@ -10,7 +10,7 @@ export const profileValidator = () => {
     dateOfBirth: Joi.string()
       .required()
       .pattern(
-        /^(([0-9])|([0-2][0-9])|([3][0-1]))\ (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\ \d{4}$/
+        /(((0)[0-9])|((1)[0-2]))[-|\/]([0-2][0-9]|(3)[0-1])[-|\/]\d{4}/
       ),
     location: Joi.string().required(),
     interests: Joi.array().required()
